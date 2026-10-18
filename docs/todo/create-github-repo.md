@@ -2,14 +2,14 @@
 id: todo/create-github-repo
 title: Create Public GitHub Repository (pocket-export)
 doc-type: todo
-status: draft
+status: completed
 owner: dave
 last-reviewed: 2026-10-18
 ---
 
 # Create Public GitHub Repository (`pocket-export`)
 
-**Status:** Ready
+**Status:** Completed
 **Date:** 2026-10-18
 **Goal:** Create a new public GitHub repository named `pocket-export` under the user's GitHub account, link `origin`, and push the initial commit and specification artifacts.
 
