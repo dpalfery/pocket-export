@@ -1,0 +1,120 @@
+lockfile_version: '1'
+generated_at: '2026-10-18T17:22:22.034035+00:00'
+apm_version: 0.28.0
+dependencies:
+- repo_url: dpalfery/kyber-weave
+  name: kyber-weave
+  host: github.com
+  resolved_commit: df39bd62ab71519c56c93eb7425db6a7d23a0acb
+  version: 0.1.1
+  package_type: apm_package
+  deployed_files:
+  - .agents/skills/doc-corpus-integrity-review
+  - .agents/skills/doc-corpus-integrity-review/SKILL.md
+  - .agents/skills/kyber-weave-cli
+  - .agents/skills/kyber-weave-cli/SKILL.md
+  - .agents/skills/kyber-weave-docs
+  - .agents/skills/kyber-weave-docs/SKILL.md
+  - .agents/skills/kyber-weave-docs/references/retrofit.md
+  - .agents/skills/kyber-weave-docs/references/rules.md
+  - .agents/skills/spec-conductor
+  - .agents/skills/spec-conductor/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/doc-corpus-integrity-review/SKILL.md: sha256:3bd1588ea19d2179c74997a0ce3ae1d464aa6e298da50b0b0e2fd48b6ed182dd
+    .agents/skills/kyber-weave-cli/SKILL.md: sha256:ac5afc5c3b4ff17522790d93ff72e10281d8fb786af24222ace6f0c1c1243522
+    .agents/skills/kyber-weave-docs/SKILL.md: sha256:8e5528bee0d3dd74c62528abafecc46c46ad8bbcb819faf69e78dea6ca2e873b
+    .agents/skills/kyber-weave-docs/references/retrofit.md: sha256:6e88c83d6ff4336f7d33ee873313ec271540e86646e52ef5720b2bdbb91c3800
+    .agents/skills/kyber-weave-docs/references/rules.md: sha256:972cd190a6efad86e3ff12b20f328d22a4cac9b4d289d787b292f0ed0e8bf531
+    .agents/skills/spec-conductor/SKILL.md: sha256:0b0a80087bd04561ab839706e77ae93e4a37836256ed754b9a2eca8a434512c8
+  content_hash: sha256:80c0c458a10aa433bdba4bc46e8f36f47399bbeee1373a1245ba9428c646c312
+deployments:
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/doc-corpus-integrity-review
+  runtime: null
+  scope: project
+  owners:
+  - dpalfery/kyber-weave
+  active_owner: dpalfery/kyber-weave
+  content_hash: null
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/doc-corpus-integrity-review/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - dpalfery/kyber-weave
+  active_owner: dpalfery/kyber-weave
+  content_hash: sha256:3bd1588ea19d2179c74997a0ce3ae1d464aa6e298da50b0b0e2fd48b6ed182dd
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/kyber-weave-cli
+  runtime: null
+  scope: project
+  owners:
+  - dpalfery/kyber-weave
+  active_owner: dpalfery/kyber-weave
+  content_hash: null
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/kyber-weave-cli/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - dpalfery/kyber-weave
+  active_owner: dpalfery/kyber-weave
+  content_hash: sha256:ac5afc5c3b4ff17522790d93ff72e10281d8fb786af24222ace6f0c1c1243522
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/kyber-weave-docs
+  runtime: null
+  scope: project
+  owners:
+  - dpalfery/kyber-weave
+  active_owner: dpalfery/kyber-weave
+  content_hash: null
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/kyber-weave-docs/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - dpalfery/kyber-weave
+  active_owner: dpalfery/kyber-weave
+  content_hash: sha256:8e5528bee0d3dd74c62528abafecc46c46ad8bbcb819faf69e78dea6ca2e873b
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/kyber-weave-docs/references/retrofit.md
+  runtime: null
+  scope: project
+  owners:
+  - dpalfery/kyber-weave
+  active_owner: dpalfery/kyber-weave
+  content_hash: sha256:6e88c83d6ff4336f7d33ee873313ec271540e86646e52ef5720b2bdbb91c3800
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/kyber-weave-docs/references/rules.md
+  runtime: null
+  scope: project
+  owners:
+  - dpalfery/kyber-weave
+  active_owner: dpalfery/kyber-weave
+  content_hash: sha256:972cd190a6efad86e3ff12b20f328d22a4cac9b4d289d787b292f0ed0e8bf531
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/spec-conductor
+  runtime: null
+  scope: project
+  owners:
+  - dpalfery/kyber-weave
+  active_owner: dpalfery/kyber-weave
+  content_hash: null
+- kind: project-relative
+  target: agent-skills
+  value: .agents/skills/spec-conductor/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - dpalfery/kyber-weave
+  active_owner: dpalfery/kyber-weave
+  content_hash: sha256:0b0a80087bd04561ab839706e77ae93e4a37836256ed754b9a2eca8a434512c8

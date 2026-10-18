@@ -1,0 +1,77 @@
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.vs/
+*.user
+*.suo
+
+# APM & Agent Harness Generated / Ephemeral Directories
+apm_modules/
+.agents/
+.agent_scratchpad/
+.claude/worktrees/
+.kilo/worktrees/
+.playwright-mcp/
+.cursor/**/*.env
+.cursor/**/*.env.*
+!.cursor/**/*.env.example
+
+# CodeGraph & Kyber-Weave Local Cache
+.codegraph/
+.kyber-weave/cache/
+
+# .NET / C# / ReSharper CLT
+**/bin/
+**/obj/
+.dotnet-home/
+/TestResults/
+/artifacts/
+nupkg/
+*.nupkg
+*.sarif
+
+# Python / uv (Audio ML Sidecar)
+.venv/
+**/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+
+# Node / React / Tauri / Rust
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+build/
+**/build/
+*.tsbuildinfo
+**/*.tsbuildinfo
+target/
+**/src-tauri/target/
+
+# Local Databases, Model Weights, & Unstaged Audio Scratch
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.gguf
+*.pt
+*.pth
+*.safetensors
+*.onnx
+
+# Playwright & E2E Test Artifacts
+test-results/
+playwright-report/
+blob-report/
+
+# Environment & Secrets
+.env
+.env.*
+!.env.example
