@@ -1,0 +1,5 @@
+# Default owners for everything in the repo.
+* @dpalfery
+
+# CI/CD workflows are admin-owned.
+.github/workflows/ @dpalfery

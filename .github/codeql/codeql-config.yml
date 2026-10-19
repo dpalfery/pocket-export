@@ -1,0 +1,5 @@
+# CodeQL scope for Pocket Export.
+#
+# All first-party code across C# (src/PocketExport.*), Python (src/audio-worker),
+# and TypeScript/React (src/ui) is analysed under security-extended queries.
+name: PocketExport CodeQL
