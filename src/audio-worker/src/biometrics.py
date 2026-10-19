@@ -2,6 +2,11 @@
 
 from __future__ import annotations
 
+try:
+    from src.safe_paths import resolve_audio_path
+except ImportError:
+    from safe_paths import resolve_audio_path
+
 import hashlib
 from pathlib import Path
 from typing import Any
@@ -29,9 +34,7 @@ def extract_embedding(
         FileNotFoundError: If audio_path does not exist on disk.
         ValueError: If speaker_segments is empty.
     """
-    path = Path(audio_path)
-    if not path.is_file():
-        raise FileNotFoundError(f"Audio file not found: {audio_path}")
+    path = resolve_audio_path(audio_path)
 
     if not speaker_segments:
         raise ValueError("speaker_segments cannot be empty")

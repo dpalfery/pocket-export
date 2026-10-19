@@ -2,19 +2,20 @@
 
 from __future__ import annotations
 
-from pathlib import Path
 from typing import Any
 from fastapi import FastAPI, HTTPException, Request, status
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 try:
+    from src.safe_paths import resolve_audio_path
     from src.aligner import align_transcript
     from src.asr import transcribe_audio
     from src.biometrics import extract_embedding
     from src.diarizer import diarize_audio
     from src.snippet_selector import select_solo_snippet
 except ImportError:
+    from safe_paths import resolve_audio_path
     from aligner import align_transcript
     from asr import transcribe_audio
     from biometrics import extract_embedding
@@ -110,12 +111,7 @@ def transcribe(request: TranscribeRequest) -> TranscribeResponse:
     Raises:
         HTTPException: Status 404 if the requested audio_path does not exist on disk.
     """
-    path = Path(request.audio_path)
-    if not path.is_file():
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Audio file not found: {request.audio_path}",
-        )
+    path = resolve_audio_path(request.audio_path)
 
     # 1. Transcribe audio
     transcript = transcribe_audio(
