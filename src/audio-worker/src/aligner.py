@@ -2,6 +2,11 @@
 
 from __future__ import annotations
 
+try:
+    from src.safe_paths import resolve_audio_path
+except ImportError:
+    from safe_paths import resolve_audio_path
+
 from pathlib import Path
 from typing import Any
 
@@ -25,9 +30,7 @@ def align_transcript(
     Raises:
         FileNotFoundError: If the specified audio_path does not exist on disk.
     """
-    path = Path(audio_path)
-    if not path.is_file():
-        raise FileNotFoundError(f"Audio file not found: {audio_path}")
+    path = resolve_audio_path(audio_path)
 
     if aligner_fn is not None:
         return aligner_fn(audio_path, transcript_segments)

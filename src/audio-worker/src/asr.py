@@ -2,6 +2,11 @@
 
 from __future__ import annotations
 
+try:
+    from src.safe_paths import resolve_audio_path
+except ImportError:
+    from safe_paths import resolve_audio_path
+
 import math
 from pathlib import Path
 from typing import Any
@@ -83,9 +88,7 @@ def transcribe_audio(
     Raises:
         FileNotFoundError: If the specified audio_path does not exist on disk.
     """
-    path = Path(audio_path)
-    if not path.is_file():
-        raise FileNotFoundError(f"Audio file not found: {audio_path}")
+    path = resolve_audio_path(audio_path)
 
     dev, compute_type = _resolve_device(device)
     duration = _get_audio_duration(path)
