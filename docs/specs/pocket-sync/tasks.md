@@ -25,7 +25,7 @@ To maximize throughput and prevent file contention or merge conflicts across par
 
 ### Wave 1: Bootstrap & Solution Scaffolding
 
-- [ ] 2. Solution & Project Scaffolding `[no-test]`
+- [x] 2. Solution & Project Scaffolding `[no-test]`
   - **Objective:** Scaffold the cross-platform solution structure: .NET 9/10 solution with core, API, and test projects; Tauri v2 desktop shell with React 18+ and TypeScript frontend; and hermetic Python 3.12 ML sidecar environment managed via `uv`. Pre-install all required NuGet packages (`Microsoft.Data.Sqlite`, `Dapper`, `TagLibSharp`, `YamlDotNet`, `Polly`, `Microsoft.Extensions.Http.Resilience`, `Microsoft.AspNetCore.Mvc.Testing`, `Moq`, `NSubstitute`, `FluentAssertions`) into `.csproj` files and declare shared base DTO records (`RecordingManifest`, `SpeakerProfile`, `TaxonomyConfig`, `AudioSnippetBounds`) so parallel C# workers in Waves 2–5 only add files in their own namespaces and never contend on project manifests.
   - **Exact files / components:**
     - `PocketExport.sln`
@@ -46,7 +46,7 @@ To maximize throughput and prevent file contention or merge conflicts across par
       2. `cd src/audio-worker && uv sync` (exit code 0).
       3. `cd src/ui && npm install && npm run build` (exit code 0).
 
-- [ ] 1. GitHub Repository Bootstrap & Initial Push `[no-test]`
+- [x] 1. GitHub Repository Bootstrap & Initial Push `[no-test]`
   - **Objective:** Initialize the public GitHub repository `pocket-export`, configure git remote `origin`, create the initial commit on `main` containing the scaffolded solution, and push the initial project tree and specification artifacts (fulfilling `docs/todo/create-github-repo.md`).
   - **Exact files / components:** `.git/config`, `docs/todo/create-github-repo.md`.
   - **Acceptance criteria:** Git repository has clean status on branch `main`; remote `origin` points to `pocket-export`; initial commit contains scaffolded code, bootstrap documentation, and specifications; GitHub repository is public and accessible via GitHub CLI.
@@ -60,7 +60,7 @@ To maximize throughput and prevent file contention or merge conflicts across par
 
 ### Wave 2: Core Foundations, Independent ML Sidecar & GUI Scaffolding
 
-- [ ] 3. Vault Storage & POSIX Relative Path Normalizer
+- [x] 3. Vault Storage & POSIX Relative Path Normalizer
   - **Objective:** Implement `VaultPathResolver` and vault directory initialization logic in `PocketExport.Core`, enforcing platform-agnostic POSIX relative paths, cross-platform filename sanitization, and strict prohibition of absolute host filesystem paths.
   - **Exact files / components:**
     - `src/PocketExport.Core/Storage/IVaultPathResolver.cs`
@@ -78,7 +78,7 @@ To maximize throughput and prevent file contention or merge conflicts across par
     - *Expected GREEN acceptance:* All path normalization, conversion, sanitization, and folder creation assertions pass with 100% test success.
     - *Sequence:* RED → GREEN → REFACTOR.
 
-- [ ] 7. Hermetic Python ML Worker (ASR & Forced Alignment)
+- [x] 7. Hermetic Python ML Worker (ASR & Forced Alignment)
   - **Objective:** Implement ASR and phoneme forced alignment in `src/audio-worker`, utilizing `faster-whisper` (`large-v3-turbo` / `large-v3` / `parakeet-tdt-0.6b-v2` via CUDA 12.8 on Windows RTX 5090) and `mlx-whisper` on macOS Metal, followed by `WhisperX` Wav2Vec2 alignment to generate word-level millisecond timestamps.
   - **Exact files / components:**
     - `src/audio-worker/src/asr.py`
@@ -98,7 +98,7 @@ To maximize throughput and prevent file contention or merge conflicts across par
     - *Expected GREEN acceptance:* Pytest suite passes; output matches standardized JSON schema.
     - *Sequence:* RED → GREEN → REFACTOR.
 
-- [ ] 8. Python Diarization, WeSpeaker CAM++ 512-d Biometrics & Solo Snippet Extractor
+- [x] 8. Python Diarization, WeSpeaker CAM++ 512-d Biometrics & Solo Snippet Extractor
   - **Objective:** Implement speaker diarization via `pyannote/speaker-diarization-community-1`, 512-d L2-normalized speaker embedding extraction via `WeSpeaker CAM++` (or `TitaNet`), and the cleanest 8-10 second non-overlapping solo audio snippet extractor algorithm.
   - **Exact files / components:**
     - `src/audio-worker/src/diarizer.py`
@@ -119,7 +119,7 @@ To maximize throughput and prevent file contention or merge conflicts across par
     - *Expected GREEN acceptance:* All Python unit tests pass with clean exit code 0.
     - *Sequence:* RED → GREEN → REFACTOR.
 
-- [ ] 9. C# Audio Worker Supervisor & IPC Client
+- [x] 9. C# Audio Worker Supervisor & IPC Client
   - **Objective:** Implement `AudioWorkerSupervisor` and `AudioWorkerClient` in `PocketExport.Core` to launch the hermetic Python sidecar, supervise child process lifecycle, enforce a 16GB memory cap, monitor loopback health, and dispatch audio transcription/diarization jobs with error recovery.
   - **Exact files / components:**
     - `src/PocketExport.Core/Ml/IAudioWorkerSupervisor.cs`, `src/PocketExport.Core/Ml/AudioWorkerSupervisor.cs`
@@ -137,7 +137,7 @@ To maximize throughput and prevent file contention or merge conflicts across par
     - *Expected GREEN acceptance:* Process launch, health polling, OOM recovery, and IPC communication tests pass.
     - *Sequence:* RED → GREEN → REFACTOR.
 
-- [ ] 14. Tauri v2 Core & React Frontend Recordings Dashboard
+- [x] 14. Tauri v2 Core & React Frontend Recordings Dashboard
   - **Objective:** Implement desktop shell in Tauri v2 (`src-tauri`) and React dashboard (`src/ui`) displaying recordings from the local SQLite index with columns for date, title, duration, domain, customer, project, speakers, status, and routed path. Support search, multi-facet filtering, detail pane inspection, and live background pipeline progress badges.
   - **Exact files / components:**
     - `src-tauri/src/main.rs`
@@ -160,7 +160,7 @@ To maximize throughput and prevent file contention or merge conflicts across par
 
 ### Wave 3: Ledger Persistence & GUI Modals
 
-- [ ] 4. Atomic Ledger Manager & Local SQLite Projection
+- [x] 4. Atomic Ledger Manager & Local SQLite Projection
   - **Objective:** Implement `LedgerManager` in `PocketExport.Core` to write atomic manifests (`.tmp` write followed by `File.Move` with linear retry on OneDrive file locks) for recordings, speakers, leases, and taxonomy; implement `LedgerProjectionService` with `FileSystemWatcher` to incrementally hydrate and update the local machine SQLite index (`index.db` in `%LOCALAPPDATA%` on Windows, `~/Library/Application Support` on macOS).
   - **Exact files / components:**
     - `src/PocketExport.Core/Ledger/ILedgerManager.cs`, `src/PocketExport.Core/Ledger/LedgerManager.cs`
@@ -180,7 +180,7 @@ To maximize throughput and prevent file contention or merge conflicts across par
     - *Expected GREEN acceptance:* All atomic write, retry, FSW sync, and SQLite projection tests pass.
     - *Sequence:* RED → GREEN → REFACTOR.
 
-- [ ] 15. GUI Solo Snippet Auditioning & One-Click Speaker Enrollment
+- [x] 15. GUI Solo Snippet Auditioning & One-Click Speaker Enrollment
   - **Objective:** Implement `SpeakerAudition` component in React allowing playback of 8-10s solo audio snippets via HTML5 audio from the C# byte-range endpoint, and inline enrollment form with Name, Organization/Customer, and "Enroll" action updating the voicebank and recording manifest.
   - **Exact files / components:**
     - `src/ui/src/components/SpeakerAudition.tsx`
@@ -198,7 +198,7 @@ To maximize throughput and prevent file contention or merge conflicts across par
     - *Expected GREEN acceptance:* Vitest component tests pass.
     - *Sequence:* RED → GREEN → REFACTOR.
 
-- [ ] 16. GUI Retroactive Speaker Match Modal Dialog & Guided Batch Re-Routing
+- [x] 16. GUI Retroactive Speaker Match Modal Dialog & Guided Batch Re-Routing
   - **Objective:** Implement `RetroactiveMatchesModal` and notification banner in React to present historical recordings matching a newly enrolled speaker's voiceprint ($\text{Sim} \ge 0.75$), with snippet playback, confidence scores, current vs projected folder paths, and single/batch approval buttons that trigger atomic folder moves and re-summarization without unprompted background file movements.
   - **Exact files / components:**
     - `src/ui/src/components/RetroactiveMatchesModal.tsx`
@@ -216,7 +216,7 @@ To maximize throughput and prevent file contention or merge conflicts across par
     - *Expected GREEN acceptance:* Vitest component tests pass.
     - *Sequence:* RED → GREEN → REFACTOR.
 
-- [ ] 17. GUI Manual Re-Tagging, Re-Transcription, & Re-Summarization Workflows
+- [x] 17. GUI Manual Re-Tagging, Re-Transcription, & Re-Summarization Workflows
   - **Objective:** Implement action workflows in the React Recording Detail view allowing manual editing of taxonomy tags (`Domain`, `Customer`, `Project`, `Initiative`) with atomic file move and audio tag updates, an on-demand "Re-Transcribe" dialog (with model and beam selection), and an on-demand "Re-Summarize" button.
   - **Exact files / components:**
     - `src/ui/src/components/TaxonomyEditor.tsx`
@@ -238,7 +238,7 @@ To maximize throughput and prevent file contention or merge conflicts across par
 
 ### Wave 4: Domain Services (Dependent on Ledger)
 
-- [ ] 5. Distributed Lease & Work Lock Coordination Service
+- [x] 5. Distributed Lease & Work Lock Coordination Service
   - **Objective:** Implement `DistributedLeaseService` in `PocketExport.Core` managing worker roles (`PrimaryPollerWorker` on Windows, `SecondaryClient` on macOS), 60-second lease manifests in `.ledger/leases/primary_poller.json` with 20-second heartbeat renewals, automatic expiration failover, and item-specific on-demand execution locks in `.ledger/locks/{recording_id}.lock`.
   - **Exact files / components:**
     - `src/PocketExport.Core/Coordination/IDistributedLeaseService.cs`
@@ -256,7 +256,7 @@ To maximize throughput and prevent file contention or merge conflicts across par
     - *Expected GREEN acceptance:* All lease acquisition, heartbeat, expiration, and lock conflict tests pass.
     - *Sequence:* RED → GREEN → REFACTOR.
 
-- [ ] 10. Speaker Voicebank Repository & Cosine Similarity Matching Engine
+- [x] 10. Speaker Voicebank Repository & Cosine Similarity Matching Engine
   - **Objective:** Implement `SpeakerVoicebankService` in `PocketExport.Core` to store enrolled speaker profiles (`.ledger/speakers/{id}.json`), calculate vector cosine similarity against 512-d embeddings, match speakers against thresholds (match $\ge 0.75$, disambiguate $0.70-0.74$, unidentified $< 0.70$), correlate Pocket cloud speaker hints, and record proposed retroactive matches in SQLite.
   - **Exact files / components:**
     - `src/PocketExport.Core/Speakers/ISpeakerVoicebankService.cs`, `src/PocketExport.Core/Speakers/SpeakerVoicebankService.cs`
@@ -274,7 +274,7 @@ To maximize throughput and prevent file contention or merge conflicts across par
     - *Expected GREEN acceptance:* All vector math, threshold matching, and retroactive scan unit tests pass.
     - *Sequence:* RED → GREEN → REFACTOR.
 
-- [ ] 11. Taxonomy Classification Engine & TagLibSharp Audio Container Tagger
+- [x] 11. Taxonomy Classification Engine & TagLibSharp Audio Container Tagger
   - **Objective:** Implement `TaxonomyClassifier` in `PocketExport.Core` to parse `taxonomy.yaml`, construct structured JSON schema prompts, and query LM Studio (`http://localhost:1234/v1/chat/completions`) to determine `Domain`, `Customer`, `Project`, `Initiative`, `confidence`, and `template_id`; implement `AudioContainerTagger` using `TagLibSharp` to write container metadata tags (Title, Artist, Album, Year, Comment) to `staging/{id}.{ext}` without modifying audio data streams.
   - **Exact files / components:**
     - `src/PocketExport.Core/Taxonomy/ITaxonomyClassifier.cs`, `src/PocketExport.Core/Taxonomy/TaxonomyClassifier.cs`
@@ -293,7 +293,7 @@ To maximize throughput and prevent file contention or merge conflicts across par
     - *Expected GREEN acceptance:* All taxonomy parsing, LLM response validation, and audio tagging tests pass.
     - *Sequence:* RED → GREEN → REFACTOR.
 
-- [ ] 12. Vault Folder Router & LM Studio Template Markdown Summarizer
+- [x] 12. Vault Folder Router & LM Studio Template Markdown Summarizer
   - **Objective:** Implement `VaultFolderRouter` in `PocketExport.Core` to route formatted transcripts to `routed/{Domain}/{Customer}/{Project}/{YYYY-MM-DD}_{id}_{slug}.md` (if confidence $\ge 0.75$) or `_needs_review/` (if confidence $< 0.75$), with collision suffixing; implement `TemplateSummarizer` to load templates from `.ledger/templates/{template_id}.md` (falling back to `default.md`), prompt LM Studio, and write formatted Markdown summaries.
   - **Exact files / components:**
     - `src/PocketExport.Core/Routing/IVaultFolderRouter.cs`, `src/PocketExport.Core/Routing/VaultFolderRouter.cs`
@@ -316,7 +316,7 @@ To maximize throughput and prevent file contention or merge conflicts across par
 
 ### Wave 5: Client Ingestion & API Layer
 
-- [ ] 6. Pocket AI Cloud Ingestion & Staging Client
+- [x] 6. Pocket AI Cloud Ingestion & Staging Client
   - **Objective:** Implement `PocketApiClient` and `PocketSyncEngine` in `PocketExport.Core` to authenticate via bearer token, poll `GET /api/v1/public/recordings`, fetch pre-signed S3 download URLs (`GET /public/recordings/{id}/audio-url`), fetch cloud metadata (`GET /public/recordings/{id}`), stream audio to `staging/{id}.{ext}` with HTTP content-length integrity checks, serialize `staging/{id}.pocket.json`, and apply Polly exponential backoff on HTTP 429/5xx errors.
   - **Exact files / components:**
     - `src/PocketExport.Core/Pocket/IPocketApiClient.cs`, `src/PocketExport.Core/Pocket/PocketApiClient.cs`
@@ -334,7 +334,7 @@ To maximize throughput and prevent file contention or merge conflicts across par
     - *Expected GREEN acceptance:* Mock sync cycle passes, downloads audio, verifies hashes, and handles transient HTTP errors gracefully.
     - *Sequence:* RED → GREEN → REFACTOR.
 
-- [ ] 13. ASP.NET Core Kestrel Web API Endpoints & Byte-Range Audio Slicing Endpoint
+- [x] 13. ASP.NET Core Kestrel Web API Endpoints & Byte-Range Audio Slicing Endpoint
   - **Objective:** Implement ASP.NET Core controllers in `src/PocketExport.Api` providing REST endpoints for querying recordings (with pagination, search, taxonomy filters), retrieving recording details, initiating mutations (re-tag, re-transcribe, re-summarize, enroll speaker), approving retroactive matches, and serving HTTP 206 byte-range audio slices for speaker solo snippets `[start_ms, end_ms]`.
   - **Exact files / components:**
     - `src/PocketExport.Api/Controllers/RecordingsController.cs`
@@ -358,7 +358,7 @@ To maximize throughput and prevent file contention or merge conflicts across par
 
 ### Wave 6: Integration Verification & Documentation Closeout
 
-- [ ] 18. End-to-End Integration & Multi-Machine Scenario Verification
+- [x] 18. End-to-End Integration & Multi-Machine Scenario Verification
   - **Objective:** Implement comprehensive end-to-end integration tests simulating a full pipeline run: Pocket API poll -> staging download -> Python ASR & diarization -> WeSpeaker biometric extraction -> taxonomy classification -> TagLibSharp metadata tagging -> folder routing -> template summarization -> GUI state sync -> multi-machine lease expiration and failover.
   - **Exact files / components:**
     - `tests/PocketExport.Core.Tests/E2E/FullPipelineE2ETests.cs`
@@ -375,7 +375,7 @@ To maximize throughput and prevent file contention or merge conflicts across par
     - *Expected GREEN acceptance:* All multi-stage E2E pipeline and multi-machine tests pass cleanly.
     - *Sequence:* RED → GREEN → REFACTOR.
 
-- [ ] 19. Closeout & System Documentation Migration `[no-test]`
+- [x] 19. Closeout & System Documentation Migration `[no-test]`
   - **Objective:** Verify all requirements `REQ-1` through `REQ-15` against implementation and test evidence, migrate durable architectural facts into canonical docs (`docs/system/architecture.md`, `<component-catalog>`, `<documentation-index>`), update specification index to Delivered, and archive the specification.
   - **Exact files / components:**
     - `docs/specs/pocket-sync/requirements.md`

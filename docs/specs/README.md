@@ -5,8 +5,8 @@ Authoritative inventory for `docs/specs/`. Read before opening a specification. 
 ## Active
 | Specification | Status | Phase | Development Mode | Path | Goal |
 | --- | --- | --- | --- | --- | --- |
-| `pocket-sync` | Ready | tasks | test-first | [pocket-sync](pocket-sync/tasks.md) | End-to-end Pocket recording/transcript sync, local GPU/Mac re-transcription, speaker diarization & biometric voicebank, taxonomy classification, OneDrive ledger routing, template summarization, and Tauri v2 + React + C# management GUI. |
 
 ## Archive
 | Specification | Archived | Outcome / canonical guidance |
 | --- | --- | --- |
+| [`pocket-sync`](pocket-sync/tasks.md) | 2026-10-18 | Delivered (REQ-1 through REQ-15 verified across 163 automated tests). Canonical architecture migrated to [`docs/system/architecture.md`](../system/architecture.md) and [`docs/catalog.md`](../catalog.md). |

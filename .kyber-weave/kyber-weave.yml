@@ -10,9 +10,9 @@ ontology:
   # Technologies this repository declares a coding standard for. Adding one and
   # re-running 'docs init' creates docs/standards/<technology>/, publishes its
   # registry property, and legalizes that value in the standard's 'technology' key.
-  technologies: []
-
-# Additions to the configuration registry rendered into AGENTS.md. Everything
-# 'docs init' creates is already published; name only what is yours.
-# config-reg:
-#   auth-design: docs/reference/auth-design.md
+  technologies:
+    - csharp
+    - python
+    - react
+    - tauri
+    - test

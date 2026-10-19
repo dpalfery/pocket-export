@@ -22,6 +22,11 @@ references that belong to this repository.
 - **<documentation-ontology>**: `docs/documentation-ontology.md`
 - **<component-catalog>**: `docs/catalog.md`
 - **<standards-root>**: `docs/standards`
+- **<csharp-coding-standard>**: `docs/standards/csharp/README.md`
+- **<python-coding-standard>**: `docs/standards/python/README.md`
+- **<react-coding-standard>**: `docs/standards/react/README.md`
+- **<tauri-coding-standard>**: `docs/standards/tauri/README.md`
+- **<test-coding-standard>**: `docs/standards/test/README.md`
 - **<plan-index>**: `docs/plans/README.md`
 - **<specification-index>**: `docs/specs/README.md`
 - **<todo-index>**: `docs/todo/README.md`

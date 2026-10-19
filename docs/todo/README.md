@@ -2,7 +2,7 @@
 id: todo/index
 title: Todos
 doc-type: index
-status: draft
+status: current
 owner: dave
 last-reviewed: 2026-10-18
 ---
@@ -15,8 +15,8 @@ Capturing it here is what stops it evaporating between sessions.
 ## Active
 | Todo | Status | Goal |
 | --- | --- | --- |
-| [create-github-repo](create-github-repo.md) | Ready | Create a new public GitHub repository named `pocket-export` on the user's GitHub account, link `origin`, and push initial repo & spec artifacts. |
 
 ## Archive
 | Todo | Archived | Successor |
 | --- | --- | --- |
+| [create-github-repo](create-github-repo.md) | 2026-10-18 | Completed in `pocket-sync` Task 1 (`https://github.com/dpalfery/pocket-export`) |

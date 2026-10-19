@@ -53,6 +53,8 @@ build/
 **/*.tsbuildinfo
 target/
 **/src-tauri/target/
+src-tauri/gen/
+**/src-tauri/gen/
 
 # Local Databases, Model Weights, & Unstaged Audio Scratch
 *.db
